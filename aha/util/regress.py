@@ -75,12 +75,18 @@ def run_glb(testname, width, height, test=''):
     print(f"--- {test} - mapping")
     start = time.time()
     my_env = {}
-    #if testname == "apps/unsharp" or testname == "apps/camera_pipeline":
     my_env = {'DISABLE_GP': '1'}
-    buildkite_call(
-        ["aha", "pipeline", testname, "--width", str(width), "--height", str(height)],
-        env=my_env
-    )
+        
+    if testname == "apps/resnet_output_stationary":
+        buildkite_call(
+            ["aha", "pipeline", testname, "--width", str(width), "--height", str(height), "--no-input-broadcast-pipelining"],
+            env=my_env
+        )
+    else:
+        buildkite_call(
+            ["aha", "pipeline", testname, "--width", str(width), "--height", str(height)],
+            env=my_env
+        )
     time_map = time.time() - start
 
     print(f"--- {test} - glb testing")
