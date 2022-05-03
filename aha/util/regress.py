@@ -77,7 +77,7 @@ def run_glb(testname, width, height, test=''):
     my_env = {}
     my_env = {'DISABLE_GP': '1'}
         
-    if testname == "apps/resnet_output_stationary":
+    if "resnet" in testname:
         buildkite_call(
             ["aha", "pipeline", testname, "--width", str(width), "--height", str(height), "--no-input-broadcast-pipelining"],
             env=my_env
