@@ -32,10 +32,6 @@ def dispatch(args, extra_args=None):
     else:
         ext = ".pgm"
 
-    if not ('PIPELINED' in os.environ and os.environ['PIPELINED'] == '1'):
-        print("Please set environmental variable PIPELINED=1")
-        return
-
     print (f"Using testbench file extension: {ext}.")
 
     map_args = [
