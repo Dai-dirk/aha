@@ -52,7 +52,7 @@ def gen_garnet(width, height):
         "--verilog",
         "--use_sim_sram",
         "--pipeline-config-interval",
-        16
+        str(16)
     ])
     return time.time() - start
 
@@ -79,7 +79,7 @@ def run_glb(testname, width, height, test=''):
     my_env = {'DISABLE_GP': '1'}
         
     buildkite_call(
-        ["aha", "pipeline", testname, "--width", str(width), "--height", str(height), "--pipeline-config-interval", 16],
+        ["aha", "pipeline", testname, "--width", str(width), "--height", str(height), "--pipeline-config-interval", str(16)],
         env=my_env
     )
 
